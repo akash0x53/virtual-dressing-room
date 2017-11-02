@@ -190,8 +190,8 @@ class MainUI:
        
         #NOTE: Please, feed either from camera or recorded video file.
 
-	#frame=self.v.outFrame() #NOTE: feeding from Camera.
-	_,frame=self.vid.read() #NOTE: Testing without camera. uncomment this to feed from camera.
+	frame=self.v.outFrame() #NOTE: feeding from Camera.
+	#_,frame=self.vid.read() #NOTE: Testing without camera. uncomment this to feed from camera.
 
         self.norm.getRGB(frame) #input to Normalized RGB
                
