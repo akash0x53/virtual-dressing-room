@@ -19,6 +19,7 @@ from vdr import yellow,pink,brown,plain,temp1,temp2,color,design
 
 templates="templates/"
 assets = os.path.join(".", "assets")
+tests = os.path.join(".", "tests")
 TEST_MODE = bool(int(os.environ.get('VDR_TEST', 0)))
 
 
@@ -35,7 +36,7 @@ class MainUI:
         
         #Initialize systems objects
         if TEST_MODE:
-            self.vid=cv2.VideoCapture("temp.avi")
+            self.vid=cv2.VideoCapture(os.path.join(tests, "demo.avi"))
         self.v=Video()
 	#----------------testing purpose--------------#
         
