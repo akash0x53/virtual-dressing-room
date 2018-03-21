@@ -18,5 +18,15 @@ Requirements
 5. OpenCV Python bindings
 6. NumPy, Gdk
 
+Test Mode
+----
+In this mode VDR will not require camera. It will use recorded video for processing.  
+To use this is mode set environment variable `VDR_TEST=1`.  
+For Example,  
+
+`
+akash@SkyFall:~/repos/virtual-dressing-room$ VDR_TEST=1 python main.py
+`
+
 
 I will try to add requirements.txt soon.
