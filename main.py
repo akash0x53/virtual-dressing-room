@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+import os
 import gtk
 import gtk.gdk as gdk
 import gobject
@@ -16,6 +18,8 @@ from vdr import green,blue
 from vdr import yellow,pink,brown,plain,temp1,temp2,color,design
 
 templates="templates/"
+assets = os.path.join(".", "assets")
+TEST_MODE = bool(int(os.environ.get('VDR_TEST', 0)))
 
 
 class MainUI:
@@ -30,9 +34,9 @@ class MainUI:
 
         
         #Initialize systems objects
-	#NOTE: To test system without system setup use recorded avi file.
+        if TEST_MODE:
+            self.vid=cv2.VideoCapture("temp.avi")
         self.v=Video()
-        self.vid=cv2.VideoCapture("temp.avi")
 	#----------------testing purpose--------------#
         
         self.back=RemoveBackground()
@@ -47,7 +51,7 @@ class MainUI:
         #-----------------------------------------------------
         
         self.__glade__=gtk.Builder()
-        self.__ui__=self.__glade__.add_from_file("main_ui.glade")
+        self.__ui__=self.__glade__.add_from_file(os.path.join(assets, "main_ui.glade"))
         
         self.__main_win__=self.__glade__.get_object("vdr_main")
         self.drawing_area=self.__glade__.get_object("da1")
@@ -133,7 +137,7 @@ class MainUI:
         self.canvas.set_background(gtk.gdk.Color(0,0,0,0))
         
         self.__main_win__.connect("delete-event",gtk.mainquit)
-        self.img=cv2.cv.LoadImage(templates+"Banner.png")
+        self.img=cv2.cv.LoadImage(os.path.join(assets, "Banner.png"))
         #
         
         self.__main_win__.show()
@@ -147,7 +151,7 @@ class MainUI:
     def change_avtar(self,event):
         print 'ok'
         if self.isBanner_mode:
-            self.img=cv2.cv.LoadImage(templates+"Banner_2.png")
+            self.img=cv2.cv.LoadImage(os.path.join(assets, "Banner_2.png"))
             
             self.timer_id=gtk.timeout_add(20*1000,self.reset)
             self.isBanner_mode=False
@@ -187,11 +191,11 @@ class MainUI:
         
     def getOutput_frames(self):
         # using VideoCapture for test
-       
-        #NOTE: Please, feed either from camera or recorded video file.
-
-	frame=self.v.outFrame() #NOTE: feeding from Camera.
-	#_,frame=self.vid.read() #NOTE: Testing without camera. uncomment this to feed from camera.
+        
+        if TEST_MODE:
+            _,frame=self.vid.read() #NOTE: Testing without camera. uncomment this to feed from camera.
+        else:
+            frame=self.v.outFrame() #NOTE: feeding from Camera.
 
         self.norm.getRGB(frame) #input to Normalized RGB
                
