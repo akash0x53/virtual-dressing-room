@@ -1,13 +1,22 @@
 import cv2
 
+
+class IVideo:
+    pass
+
+"""
+  VideoInput
+  /    \
+ /      \
+Camera VideoFile 
+"""
+
 class Video:
-    
     def __init__(self):
         self.__cap__=cv2.VideoCapture()
         self.__cap__.open(0)
         self.__cap__.set(cv2.cv.CV_CAP_PROP_FRAME_HEIGHT,600)
         self.__cap__.set(cv2.cv.CV_CAP_PROP_FRAME_WIDTH,800)
-        
         self.__frame__=None
         
     def getCapture(self):
