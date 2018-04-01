@@ -7,15 +7,15 @@ import cv2
 import numpy as np
 import time
 
-from vdr.Video import Video
-from vdr.Back_sub import RemoveBackground
-from vdr.color_replace import Replace
-from vdr.normalized import NormalizedRGB
-from vdr.Tshirt import DetectShirt
+from Video import Video
+from Back_sub import RemoveBackground
+from color_replace import Replace
+from normalized import NormalizedRGB
+from Tshirt import DetectShirt
 
-from vdr import red
-from vdr import green,blue
-from vdr import yellow,pink,brown,plain,temp1,temp2,color,design
+from config import red
+from config import green,blue
+from config import yellow,pink,brown,plain,temp1,temp2,color,design
 
 templates="templates/"
 assets = os.path.join(".", "assets")

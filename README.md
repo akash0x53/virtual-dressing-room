@@ -25,7 +25,7 @@ To use this is mode set environment variable `VDR_TEST=1`.
 For Example,  
 
 `
-akash@SkyFall:~/repos/virtual-dressing-room$ VDR_TEST=1 python main.py
+akash@SkyFall:~/repos/virtual-dressing-room$ VDR_TEST=1 python vdr
 `
 
 
