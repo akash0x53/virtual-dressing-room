@@ -31,8 +31,6 @@ class MainUI:
         self.final=None
         self.design=7
         self.color=None
-
-
         
         #Initialize systems objects
         if TEST_MODE:
@@ -63,7 +61,7 @@ class MainUI:
                         
         #init Drawing Area
         self.drawing_area.realize()
-        self.drawing_area.set_size_request(800,600)
+        self.drawing_area.set_size_request(config.width, config.height)
         #get canvas
         self.canvas=self.drawing_area.window
         

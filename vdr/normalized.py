@@ -1,19 +1,20 @@
 import cv2
+import config
 import numpy as np
 
 class NormalizedRGB:
     
     def __init__(self):
-        self.rgb=np.zeros((600,800,3),np.uint8)
+        self.rgb=np.zeros((config.height,config.width,3),np.uint8)
         
-        self.norm1=np.zeros((300,400),np.float32)
-        self.norm2=np.zeros((300,400),np.float32)
-        self.norm3=np.zeros((300,400),np.float32)
+        #self.norm1=np.zeros((300,400),np.float32)
+        #self.norm2=np.zeros((300,400),np.float32)
+        #self.norm3=np.zeros((300,400),np.float32)
         
-        self.norm=np.zeros((600,800,3),np.float32)
-        self.norm_rgb=np.zeros((600,800,3),np.uint8)
+        self.norm=np.zeros((config.height,config.width,3),np.float32)
+        self.norm_rgb=np.zeros((config.height,config.width,3),np.uint8)
         
-        self.down=np.zeros((600,800,3),np.float32)
+        self.down=np.zeros((config.height,config.width,3),np.float32)
         
     
     def getRGB(self,rgb):

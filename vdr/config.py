@@ -12,3 +12,8 @@ temp2=9
 color=0
 design=0
 
+# Camera resolution
+# 800x600
+
+width = 800
+height = 600

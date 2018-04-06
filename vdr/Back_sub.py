@@ -1,6 +1,7 @@
 import cv2
 import cv2.cv as cv
 import numpy as np
+import config
 
 class RemoveBackground:
     ''' background subtraction, Frame compare metho'''
@@ -25,7 +26,7 @@ class RemoveBackground:
     
     def subtract_back(self,frm):
         #dst=self.__back__-self.__foreground__
-        temp=np.zeros((600,800),np.uint8)
+        temp=np.zeros((config.height,config.width),np.uint8)
         
         self.__foreground__=cv2.blur(self.__foreground__,(3,3))
         dst=cv2.absdiff(self.__back__,self.__foreground__)

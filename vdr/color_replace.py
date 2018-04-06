@@ -1,6 +1,7 @@
 import cv2
 import cv2.cv as cv
 import numpy as np
+import config
 from config import color
 
 
@@ -8,10 +9,10 @@ class Replace:
     
     def __init__(self):
         global color
-        self.rgb=np.zeros((600,800,3),np.uint8)
-        self.mask=np.zeros((600,800),np.uint8)
+        self.rgb=np.zeros((config.height,config.width,3),np.uint8)
+        self.mask=np.zeros((config.height,config.width),np.uint8)
         self.hue_val=color
-        self.scratch=np.zeros((600,800,3),np.uint8)
+        self.scratch=np.zeros((config.height,config.width,3),np.uint8)
         
         #cv2.namedWindow("hue")
         #cv2.createTrackbar("hue", "hue",self.hue_val,255,self.change)
@@ -22,7 +23,7 @@ class Replace:
     def getFrames(self,img,mask=None):
         self.rgb=img
         self.mask=mask
-        self.scratch=np.zeros((600,800,3),np.uint8)
+        self.scratch=np.zeros((config.height,config.width,3),np.uint8)
         
         self.scratch=cv2.cvtColor(img,cv2.cv.CV_BGR2HSV)
         self.hue,self.sat,self.val=cv2.split(self.scratch)
@@ -78,7 +79,7 @@ class Replace:
         
         mat=cv2.getPerspectiveTransform(p_mat,q)
         
-        dst=cv2.warpPerspective(design_template,mat,(800,600))
+        dst=cv2.warpPerspective(design_template,mat,(config.width,config.height))
         
         
         temp=cv2.cvtColor(input_image,cv2.cv.CV_BGR2BGRA)

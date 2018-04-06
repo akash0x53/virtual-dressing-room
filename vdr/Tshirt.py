@@ -2,11 +2,13 @@ import cv2
 import cv2.cv as cv
 import numpy as np
 
+import config
+
 class DetectShirt:
     
     def __init__(self):
-        self.norm_rgb=np.zeros((600,800,3),np.uint8)
-        self.dst=np.zeros((600,800),np.uint8)
+        self.norm_rgb=np.zeros((config.height,config.width,3),np.uint8)
+        self.dst=np.zeros((config.height,config.width),np.uint8)
         self.b=0
         self.g=0
         self.r=0
@@ -15,9 +17,9 @@ class DetectShirt:
         self.lg=0
         self.lr=0
         
-        self.m=np.zeros((600,800),np.uint8)
+        self.m=np.zeros((config.height,config.width),np.uint8)
         #self.win=cv2.namedWindow("detect")
-        #self.dst=cv.CreateImage((800,600),8,1)
+        #self.dst=cv.CreateImage((config.width,config.height),8,1)
         
         #cv2.createTrackbar("blue", "detect",0,255,self.change_b)
         #cv2.createTrackbar("green","detect",0,255,self.change_g)
