@@ -28,5 +28,10 @@ For Example,
 akash@SkyFall:~/repos/virtual-dressing-room$ VDR_TEST=1 python vdr
 `
 
+Adapt to Camera Resolution
+---
+You can change `width` and `height` defined in `vdr/config.py` file according to your camera capability.
+
+
 
 I will try to add requirements.txt soon.
